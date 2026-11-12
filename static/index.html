@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1A1A40">
+  <title>CNAMIS | OPP</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" data-page="dashboard" aria-label="CNAMIS home">
+        <span class="brand-logo-wrap"><img class="brand-logo" src="/image/opp-logo.webp" alt="Papua New Guinea national emblem"></span>
+        <span><strong>CNAMIS</strong><small>PUBLIC SERVICE</small></span>
+      </a>
+      <div class="agency-block">
+        <label for="agencySelect">AGENCY</label>
+        <select id="agencySelect" aria-label="Select agency"></select>
+        <small>Local source data: OPP</small>
+      </div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-link active" data-page="dashboard"><span>▦</span> Dashboard</button>
+        <button class="nav-link" data-page="roster"><span>♧</span> Agency roster & participation</button>
+        <button class="nav-link" data-page="diagnostic"><span>◉</span> CNA diagnostic</button>
+        <button class="nav-link" data-page="skills"><span>▤</span> Skills gap review</button>
+        <button class="nav-link" data-page="needs"><span>◇</span> Training needs</button>
+        <button class="nav-link" data-page="programme"><span>▦</span> Five-year plan</button>
+        <button class="nav-link" data-page="talent"><span>♙</span> Talent cards</button>
+        <button class="nav-link" data-page="monitoring"><span>◷</span> Monitoring</button>
+        <button class="nav-link" data-page="workspace"><span>✦</span> Evidence workspace</button>
+        <button class="nav-link" data-page="method"><span>ⓘ</span> How analysis works</button>
+      </nav>
+      <div class="sidebar-foot">
+        <span class="local-dot"></span>
+        <span><strong>Local-only mode</strong><small>Data stays on this computer</small></span>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="menu-button" id="menuButton" aria-label="Open navigation">☰</button>
+        <div>
+          <div class="eyebrow">DEPARTMENT OF PERSONNEL MANAGEMENT · PAPUA NEW GUINEA</div>
+          <h1 id="pageTitle">Agency overview</h1>
+        </div>
+        <div class="top-actions">
+          <span class="status-pill"><span class="local-dot"></span> Local workspace</span>
+          <a class="button button-primary" id="cnaReportLink" href="/api/report.cna.pdf?agency=OPP">Download CNA Report</a>
+          <a class="button button-outline" id="excelExportLink" href="/api/export.xlsx?agency=OPP">Export Excel</a>
+        </div>
+      </header>
+      <div class="banner" id="globalBanner" role="status" hidden></div>
+      <section id="pageContent" class="page-content" aria-live="polite">
+        <div class="loading-card">Loading local agency records…</div>
+      </section>
+      <footer class="page-footer">
+        <span>CNAMIS · Office of the Public Prosecutor</span>
+        <span>Evidence snapshot · Planning period 2027–2031</span>
+      </footer>
+    </main>
+  </div>
+
+  <dialog id="editDialog" class="modal">
+    <form method="dialog" id="editForm">
+      <div class="modal-head">
+        <div><div class="eyebrow">FIVE-YEAR PROGRAMME</div><h2>Edit activity</h2></div>
+        <button class="icon-button" value="cancel" aria-label="Close">×</button>
+      </div>
+      <p class="muted" id="editActivityId"></p>
+      <div id="editFields" class="form-grid"></div>
+      <div class="modal-actions">
+        <button class="button button-outline" value="cancel">Cancel</button>
+        <button class="button button-primary" id="savePlanButton" type="button">Save changes</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="monitorDialog" class="modal">
+    <form method="dialog">
+      <div class="modal-head">
+        <div><div class="eyebrow">MONITORING & EVALUATION</div><h2>Update implementation</h2></div>
+        <button class="icon-button" value="cancel" aria-label="Close">×</button>
+      </div>
+      <p class="muted" id="monitorActivityId"></p>
+      <div id="monitorFields" class="form-grid"></div>
+      <div class="modal-actions">
+        <button class="button button-outline" value="cancel">Cancel</button>
+        <button class="button button-primary" id="saveMonitorButton" type="button">Save monitoring</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="talentDialog" class="modal modal-wide">
+    <form method="dialog">
+      <div class="modal-head">
+        <div><div class="eyebrow">CNA RESPONDENT PROFILE</div><h2 id="talentName">Talent card</h2></div>
+        <button class="icon-button" value="cancel" aria-label="Close">×</button>
+      </div>
+      <div id="talentDetails" class="profile-grid"></div>
+      <div class="modal-actions"><button class="button button-outline" value="cancel">Close</button></div>
+    </form>
+  </dialog>
+
+</body>
+</html>

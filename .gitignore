@@ -1,0 +1,9 @@
+/.venv/
+__pycache__/
+*.py[cod]
+cnamis.db*
+*.xlsx
+*.pdf
+corporate_objectives_and_targets.txt
+extracted_excel_data.txt
+image/National_emblem_of_Papua_New_Guinea_(variant).svg (1).webp
